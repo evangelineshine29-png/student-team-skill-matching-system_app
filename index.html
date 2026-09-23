@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Student Project Team & Skill Matching System</title>
+<style>
+:root{--navy:#122a4a;--blue:#2365b0;--teal:#1f918f;--purple:#7056aa;--coral:#e8695b;--bg:#f5f8fc;--text:#26313d;--muted:#6b7785;--border:#dce3eb;--white:#fff}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+header{background:linear-gradient(135deg,var(--navy),#1e568e);color:white;padding:28px 6%;display:flex;justify-content:space-between;align-items:center;gap:20px}
+h1{margin:0;font-size:28px} header p{margin:6px 0 0;color:#d9e8f6}.badge{background:#ffffff20;border:1px solid #ffffff40;padding:9px 13px;border-radius:20px;font-size:13px}
+nav{background:white;border-bottom:1px solid var(--border);padding:0 6%;display:flex;gap:8px;flex-wrap:wrap}
+nav button{border:0;background:white;padding:15px 17px;color:var(--muted);font-weight:bold;cursor:pointer;border-bottom:3px solid transparent}
+nav button.active{color:var(--blue);border-bottom-color:var(--teal)}
+main{max-width:1180px;margin:28px auto;padding:0 20px}.view{display:none}.view.active{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:22px;box-shadow:0 5px 18px #122a4a0b}
+.card h2,.card h3{margin-top:0;color:var(--navy)}.metric{font-size:34px;font-weight:bold;color:var(--blue)}
+label{display:block;font-size:13px;font-weight:bold;color:var(--muted);margin:13px 0 6px}
+input,textarea,select{width:100%;padding:12px;border:1px solid var(--border);border-radius:10px;font-size:14px;background:white}
+textarea{min-height:90px;resize:vertical}
+button.primary{background:var(--blue);color:white;border:0;border-radius:10px;padding:12px 17px;font-weight:bold;cursor:pointer;margin-top:14px}
+button.secondary{background:#edf4fc;color:var(--blue);border:0;border-radius:10px;padding:10px 14px;font-weight:bold;cursor:pointer}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{background:#edf7f5;color:#176f6d;border-radius:18px;padding:7px 10px;font-size:12px;font-weight:bold}
+.person{display:flex;align-items:center;gap:13px;padding:13px;border:1px solid var(--border);border-radius:12px;margin:10px 0}
+.avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:white;font-weight:bold;background:var(--blue)}
+.score{margin-left:auto;font-weight:bold;color:var(--teal)}
+.status{padding:5px 9px;border-radius:14px;font-size:11px;font-weight:bold;background:#fff4dd;color:#946900}
+.status.accepted{background:#e5f5ea;color:#26743e}
+.notice{padding:14px;border-radius:12px;background:#eef7ff;border:1px solid #cfe3f7;margin:14px 0}
+.required{color:#c0392b;font-weight:bold}.file-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.file-status{margin-top:10px;font-size:13px;font-weight:bold}.file-status.ok{color:#26743e}
+@media(max-width:650px){.file-row{grid-template-columns:1fr}}
+footer{max-width:1180px;margin:30px auto;padding:20px;color:var(--muted);font-size:12px;text-align:center}
+.small{font-size:12px;color:var(--muted)} .hero{padding:26px;background:linear-gradient(135deg,#eaf4ff,#e9f7f5);border-radius:18px;margin-bottom:20px}
+.hero h2{margin:0;color:var(--navy);font-size:25px}.hero p{max-width:760px;line-height:1.55}
+@media(max-width:650px){header{display:block}.badge{display:inline-block;margin-top:15px}h1{font-size:22px}}
+</style>
+</head>
+<body>
+<header>
+  <div><h1>Student Project Team & Skill Matching System</h1><p>Find the right teammates. Build better projects.</p></div>
+  <div class="badge">Demo Application • Shine Evangeline</div>
+</header>
+<nav>
+  <button class="active" onclick="show('dashboard',this)">Dashboard</button>
+  <button onclick="show('profile',this)">Student Profile</button>
+  <button onclick="show('project',this)">Create Project</button>
+  <button onclick="show('certificate',this)">Certificate</button>
+  <button onclick="show('matching',this)">Skill Matching</button>
+  <button onclick="show('team',this)">Team</button>
+</nav>
+<main>
+<section id="dashboard" class="view active">
+ <div class="hero"><h2>Project Demo</h2><p>This sample demonstrates the proposed flow: student profile → project requirements → skill matching → invitation → team formation.</p></div>
+ <div class="grid">
+  <div class="card"><h3>Student</h3><div class="metric">Shine Evangeline</div><p class="small">Information Science • 2nd Year • SSIT, Tumkur</p></div>
+  <div class="card"><h3>Project</h3><div class="metric">3</div><p class="small">Suggested team members for the sample project</p></div>
+  <div class="card"><h3>Matching</h3><div class="metric">Skill-based</div><p class="small">Rule-based comparison for the initial version</p></div>
+ </div>
+ <div class="card" style="margin-top:18px"><h3>Sample Project</h3><p><b>College Canteen Management App</b></p><div class="chips"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">UI/UX</span><span class="chip">Presentation</span></div></div>
+</section>
+
+<section id="profile" class="view">
+ <div class="card"><h2>Student Skill Profile</h2>
+  <label>Name</label><input id="name" value="Shine Evangeline">
+  <label>USN</label><input value="1XX23ISXXX">
+  <label>Branch</label><input value="Information Science">
+  <label>Year</label><input value="2nd Year">
+  <label>College</label><input value="SSIT, Tumkur">
+  <label>Skills</label><input id="skills" value="Python, Java, SQL, Web Development, AI/ML, UI/UX, Documentation, Presentation">
+  <button class="primary" onclick="saveProfile()">Save Profile</button>
+  <div id="profileMsg" class="notice" style="display:none"></div>
+ </div>
+</section>
+
+<section id="project" class="view">
+ <div class="card"><h2>Create Project</h2>
+  <label>Project Name</label><input id="pname" value="College Canteen Management App">
+  <label>Description</label><textarea id="pdesc">An academic web application concept for managing college canteen activities.</textarea>
+  <label>Required Skills</label><input id="req" value="Python, SQL, UI/UX, Presentation">
+  <label>Team Size</label><select><option>3 members</option><option>4 members</option><option>5 members</option></select>
+  <button class="primary" onclick="createProject()">Create Project & Find Matches</button>
+  <div id="projectMsg" class="notice" style="display:none"></div>
+ </div>
+</section>
+
+
+<section id="certificate" class="view">
+  <div class="card">
+    <h2>Mandatory Certificate Upload</h2>
+    <p class="small">Every student must upload the certificate required for the skill/profile before the profile can be submitted.</p>
+    <div class="notice"><b>Mandatory requirement:</b> Select the certificate type and upload the corresponding certificate file. <span class="required">*</span></div>
+    <div class="file-row">
+      <div>
+        <label>Certificate Type <span class="required">*</span></label>
+        <select id="certificateType">
+          <option value="">-- Select certificate --</option>
+          <option>Python Certificate</option><option>Java Certificate</option>
+          <option>SQL Certificate</option><option>Web Development Certificate</option>
+          <option>AI/ML Certificate</option><option>UI/UX Certificate</option>
+          <option>Other Skill Certificate</option>
+        </select>
+      </div>
+      <div>
+        <label>Upload Certificate <span class="required">*</span></label>
+        <input id="certificateFile" type="file" accept=".pdf,.jpg,.jpeg,.png">
+      </div>
+    </div>
+    <div id="certificateStatus" class="file-status">No certificate uploaded yet.</div>
+    <button class="primary" onclick="saveCertificate()">Save Certificate</button>
+    <div id="certificateMsg" class="notice" style="display:none"></div>
+  </div>
+</section>
+
+<section id="matching" class="view">
+ <div class="card"><h2>Recommended Students</h2><p class="small">Example recommendations for the selected project. The score is illustrative and based on matching required skills.</p>
+  <div class="person"><div class="avatar">A</div><div><b>Student A</b><div class="small">Python + SQL</div><div class="chips"><span class="chip">Python</span><span class="chip">SQL</span></div></div><div class="score">2 / 4</div><button class="secondary" onclick="invite(this)">Invite</button></div>
+  <div class="person"><div class="avatar" style="background:var(--purple)">B</div><div><b>Student B</b><div class="small">UI/UX</div><div class="chips"><span class="chip">UI/UX</span></div></div><div class="score">1 / 4</div><button class="secondary" onclick="invite(this)">Invite</button></div>
+  <div class="person"><div class="avatar" style="background:var(--coral)">C</div><div><b>Student C</b><div class="small">Presentation</div><div class="chips"><span class="chip">Presentation</span></div></div><div class="score">1 / 4</div><button class="secondary" onclick="invite(this)">Invite</button></div>
+ </div>
+</section>
+
+<section id="team" class="view">
+ <div class="card"><h2>Project Team</h2>
+  <div class="person"><div class="avatar">A</div><div><b>Student A</b><div class="small">Python + SQL</div></div><span class="status accepted">Accepted</span></div>
+  <div class="person"><div class="avatar" style="background:var(--purple)">B</div><div><b>Student B</b><div class="small">UI/UX</div></div><span class="status">Invitation Sent</span></div>
+  <div class="person"><div class="avatar" style="background:var(--coral)">C</div><div><b>Student C</b><div class="small">Presentation</div></div><span class="status">Invitation Sent</span></div>
+  <div class="notice"><b>Project owner:</b> Shine Evangeline • <b>College:</b> SSIT, Tumkur</div>
+ </div>
+</section>
+</main>
+<footer>Student Project Team & Skill Matching System • Shine Evangeline • Information Science • 2nd Year • SSIT, Tumkur</footer>
+<script>
+function show(id,btn){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}
+function saveProfile(){
+  const type=document.getElementById('certificateType').value;
+  const file=document.getElementById('certificateFile').files[0];
+  let m=document.getElementById('profileMsg');
+  if(!type || !file){
+    m.textContent='Certificate upload is mandatory. Select a certificate type and upload the certificate before saving the profile.';
+    m.style.display='block'; return;
+  }
+  m.textContent='Profile saved successfully with the required certificate.';
+  m.style.display='block';
+}
+function saveCertificate(){
+  const type=document.getElementById('certificateType').value;
+  const file=document.getElementById('certificateFile').files[0];
+  const msg=document.getElementById('certificateMsg');
+  const status=document.getElementById('certificateStatus');
+  if(!type || !file){
+    msg.textContent='Please select the certificate type and upload the certificate file.';
+    msg.style.display='block'; return;
+  }
+  status.textContent='Uploaded: '+file.name+' ('+type+')';
+  status.className='file-status ok';
+  msg.textContent='Certificate uploaded successfully. The certificate is now attached to this student profile in the demo.';
+  msg.style.display='block';
+}
+document.getElementById('certificateFile').addEventListener('change',function(){
+  const status=document.getElementById('certificateStatus');
+  status.textContent=this.files[0] ? 'Selected: '+this.files[0].name : 'No certificate uploaded yet.';
+  status.className='file-status'+(this.files[0] ? ' ok' : '');
+});
+
+function createProject(){let m=document.getElementById('projectMsg');m.textContent='Project created. Matching is ready using the required skills entered above.';m.style.display='block'}
+function invite(btn){btn.textContent='Invitation Sent';btn.disabled=true;btn.style.opacity=.65}
+</script>
+</body>
+</html>
